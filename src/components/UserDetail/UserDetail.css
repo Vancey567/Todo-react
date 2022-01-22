@@ -1,0 +1,11 @@
+.user-container {
+    background-color: rgb(243, 66, 190);
+    width: 600px;
+    height: 300px;
+}
+
+/* .user-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+} */
