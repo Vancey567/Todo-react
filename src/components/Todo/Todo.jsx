@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import todoCss from "./Todo.css";
+import React from "react";
+import "./Todo.css";
 
 const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
   const url = "/users";
@@ -7,7 +7,6 @@ const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
     fetch(`${url}/${userid}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUser(data);
         setData(todoData);
         setToggle(!toggle);
@@ -30,12 +29,12 @@ const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
         <div className="todo-scroll-div">
           {setAscending
             ? todo.map((data, index) => {
-              console.log(data)
+                console.log(data);
                 return (
                   <div className="todo-item" key={data.id}>
                     <p>{data.id}</p>
                     <p className="todo-detail">{data.title}</p>
-                    <p>{console.log(data.completed)}</p>
+                    <p>{(data.completed) ? "Complete" : "Incomplete"} </p>
                     <button
                       onClick={() => {
                         getUser(data, data.userId);
@@ -55,7 +54,7 @@ const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
                     <div className="todo-item" key={data.id}>
                       <p>{data.id}</p>
                       <p>{data.title}</p>
-                      <p>{data.completed}</p>
+                      <p>{String(data.completed)}</p>
                       <button
                         onClick={() => {
                           getUser(data, data.userId);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import todoCss from "./Todo.css";
-// import TodoHeader from "./TodoHeader";
+import  "./Todo.css";
+
 import Todo from "./Todo";
 
 const TodoList = ({ setUser, setData, setToggle, toggle }) => {
@@ -45,13 +45,12 @@ const TodoList = ({ setUser, setData, setToggle, toggle }) => {
   }
   return (
     <div className="todo-container">
-      {/* <TodoHeader /> */}
       <div className="todo-header">
         <div className="todo-head">
           <h1>Todo</h1>
           <select name="sort" id="sort" onChange={sort}>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option style={{backgroundColor:"blue"}} value="asc">Ascending</option>
+            <option style={{backgroundColor:"blue"}} value="desc">Descending</option>
           </select>
         </div>
         <input

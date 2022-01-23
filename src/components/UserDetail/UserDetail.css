@@ -1,6 +1,6 @@
 .user-container {
     background-color: #09091b;
-    width: 300px;
+    width: 350px;
     height: 300px;
     border-radius: 8px;
     position: fixed;
@@ -10,9 +10,6 @@
 }
 
 .user-detail {
-    /* display: flex;
-    align-items: center;
-    justify-content: space-evenly; */
     color: #fff;
     margin: 10px;
 }
@@ -20,6 +17,6 @@
 .user-detail-head {
     padding: 0 15px 0 0;
     font-weight: bold;
-    /* text-indent: 50px; */
-    /* letter-spacing: .7px; */
+    display: inline-block;
+    width: 32%;
 }
