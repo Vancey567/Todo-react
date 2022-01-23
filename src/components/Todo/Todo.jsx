@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
-import UserDetail from "../UserDetail/UserDetail";
-
 import todoCss from "./Todo.css";
 
-const Todo = ({ todo, setData }) => {
+const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
+
+  const url = "/users";
+  function getUser(todoData,userid) {
+    fetch(`${url}/${userid}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+        setData(todoData);
+        setToggle(!toggle)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  console.log("Rendering");
   return (
     <div className="todo">
       <div className="todo-body">
@@ -13,16 +27,44 @@ const Todo = ({ todo, setData }) => {
           <h1>Status</h1>
           <h1>Action</h1>
         </div>
-        {todo.map((data, index) => {
-          return (
-            <div className="todo-item" key={data.id}>
-              <p>{data.id}</p>
-              <p>{data.title}</p>
-              <p>{data.completed}</p>
-              <button onClick={()=> {setData(data)}}>view user</button>
-            </div>
-          );
-        })}
+
+        {setAscending
+          ? todo.map((data, index) => {
+              return (
+                <div className="todo-item" key={data.id}>
+                  <p>{data.id}</p>
+                  <p>{data.title}</p>
+                  <p>{data.completed}</p>
+                  <button
+                    onClick={() => {
+                      getUser(data, data.userId);
+                    }}
+                  >
+                    view user
+                  </button>
+                </div>
+              );
+            })
+          : todo
+              .slice(0)
+              .reverse()
+              .map((data, index) => {
+                // slice to make shallow copy
+                return (
+                  <div className="todo-item" key={data.id}>
+                    <p>{data.id}</p>
+                    <p>{data.title}</p>
+                    <p>{data.completed}</p>
+                    <button
+                      onClick={() => {
+                        getUser(data, data.userId);
+                      }}
+                    >
+                      view user
+                    </button>
+                  </div>
+                );
+              })}
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import TodoCSS from '../Todo/Todo.css' 
 import ToggelSwitch from '../Toggle/Toggle'
 
-
 const TodoHeader = () => {
   const [search, setSearch] = useState("");
+
 
   const searchTodo = (e) => {
     setSearch(e.target.value);
@@ -18,8 +18,7 @@ const TodoHeader = () => {
         <div className="todo-head">
             <h1>Todo</h1>
             <select name="sort" id="sort">
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
+                
             </select>
         </div>
       <input

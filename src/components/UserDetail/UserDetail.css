@@ -1,11 +1,14 @@
 .user-container {
     background-color: rgb(243, 66, 190);
-    width: 600px;
+    width: 300px;
     height: 300px;
+    border-radius: 8px;
 }
 
-/* .user-detail {
-    display: flex;
+.user-detail {
+    /* display: flex;
     align-items: center;
-    justify-content: space-evenly;
-} */
+    justify-content: space-evenly; */
+    color: #fff;
+    margin: 10px;
+}

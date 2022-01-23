@@ -4,9 +4,10 @@ import todoCss from "./Todo.css";
 import TodoHeader from "./TodoHeader";
 import Todo from "./Todo";
 
-const TodoList = ({setData}) => {
+const TodoList = ({ setUser, setData, setToggle, toggle }) => {
   const [todo, setTodo] = useState([]);
   const [filteredTodo, setFilteredTodo] = useState([]);
+  const [ascending, setAscending] = useState(true);
 
   const fetchData = () => {
     const url = "/todos";
@@ -15,7 +16,6 @@ const TodoList = ({setData}) => {
         return response.json();
       })
       .then((data) => {
-        // setFilteredTodo(data);
         setTodo(data);
       })
       .catch((error) => {
@@ -24,28 +24,32 @@ const TodoList = ({setData}) => {
   };
 
   const searchTodo = (value) => {
-    console.log("called");
-    console.log(todo);
     let tempTodo = todo.filter((to) => {
       let title = to.title.toLowerCase();
       return title.includes(value.toLowerCase());
     });
-    console.log(tempTodo);
     setFilteredTodo(tempTodo);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(filteredTodo.length);
 
+  function sort(e) {
+    console.log(e.target.value);
+    if (e.target.value === "asc") {
+      setAscending(true);
+    } else {
+      setAscending(false);
+    }
+  }
   return (
     <div className="todo-container">
       {/* <TodoHeader /> */}
       <div className="todo-header">
         <div className="todo-head">
           <h1>Todo</h1>
-          <select name="sort" id="sort">
+          <select name="sort" id="sort" onChange={sort}>
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
@@ -60,9 +64,23 @@ const TodoList = ({setData}) => {
         />
       </div>
       {filteredTodo.length ? (
-        <Todo todo={filteredTodo} setData={setData} />
+        <Todo
+          todo={filteredTodo}
+          setUser={setUser}
+          setData={setData}
+          setAscending={ascending}
+          setToggle={setToggle}
+          toggle={toggle}
+        />
       ) : (
-        <Todo todo={todo} setData={setData} />
+        <Todo
+          todo={todo}
+          setUser={setUser}
+          setData={setData}
+          setAscending={ascending}
+          setToggle={setToggle}
+          toggle={toggle}
+        />
       )}
     </div>
   );
