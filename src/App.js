@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <div className="todo-padd">
-        <TodoList setUser={setUser} setData={setData} setToggle={setToggle} toggle={toggle}/>
-        <UserDetail user={user} data={data} callEffect={true} toggle={toggle} />
+        <TodoList className="item1" setUser={setUser} setData={setData} setToggle={setToggle} toggle={toggle}/>
+        <UserDetail className="item2" user={user} data={data} callEffect={true} toggle={toggle} />
       </div>
     </div>
   );

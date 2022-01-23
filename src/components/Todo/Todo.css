@@ -5,13 +5,31 @@
     padding: 20px;
     border-radius: 10px;
     color: #fff;
+    overflow-y: scroll;
+    padding-right: 17px;
+    position: fixed;
+    top: 50px;
+    left: 120px;
+}
+::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #002fff;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+.todo {
     overflow: auto;
 }
 
-.todo-body {
-    overflow: scroll;
-
+.todo-detail {
+    width: 60%;
 }
+
 
 .todo-head {
     display: flex;
@@ -35,7 +53,7 @@
     color: #e2e2e2;
 }
 
-#sort {
+select {
     background: linear-gradient(90deg, rgba(42, 45, 240, 1) 0%, rgb(223, 116, 245) 100%);
     border: 2px solid rgb(85, 29, 241);
     border-radius: 5px;
@@ -62,6 +80,7 @@
     height: 40px;
     margin: 10px 30px;
     border-radius: 5px;
+    height: 44px;
 }
 
 .todo-item:nth-child(4n) {
@@ -87,4 +106,8 @@
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+}
+
+select>option {
+    background: linear-gradient(90deg, rgba(25, 64, 240, 1) 0%, rgba(128, 24, 247, 1) 100%)
 }

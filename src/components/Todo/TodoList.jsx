@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import todoCss from "./Todo.css";
-import TodoHeader from "./TodoHeader";
+// import TodoHeader from "./TodoHeader";
 import Todo from "./Todo";
 
 const TodoList = ({ setUser, setData, setToggle, toggle }) => {

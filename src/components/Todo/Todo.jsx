@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import todoCss from "./Todo.css";
 
 const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
-
   const url = "/users";
-  function getUser(todoData,userid) {
+  function getUser(todoData, userid) {
     fetch(`${url}/${userid}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setUser(data);
         setData(todoData);
-        setToggle(!toggle)
+        setToggle(!toggle);
       })
       .catch((err) => {
         console.log(err);
@@ -28,33 +27,15 @@ const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
           <h1>Action</h1>
         </div>
 
-        {setAscending
-          ? todo.map((data, index) => {
-              return (
-                <div className="todo-item" key={data.id}>
-                  <p>{data.id}</p>
-                  <p>{data.title}</p>
-                  <p>{data.completed}</p>
-                  <button
-                    onClick={() => {
-                      getUser(data, data.userId);
-                    }}
-                  >
-                    view user
-                  </button>
-                </div>
-              );
-            })
-          : todo
-              .slice(0)
-              .reverse()
-              .map((data, index) => {
-                // slice to make shallow copy
+        <div className="todo-scroll-div">
+          {setAscending
+            ? todo.map((data, index) => {
+              console.log(data)
                 return (
                   <div className="todo-item" key={data.id}>
                     <p>{data.id}</p>
-                    <p>{data.title}</p>
-                    <p>{data.completed}</p>
+                    <p className="todo-detail">{data.title}</p>
+                    <p>{console.log(data.completed)}</p>
                     <button
                       onClick={() => {
                         getUser(data, data.userId);
@@ -64,7 +45,28 @@ const Todo = ({ todo, setUser, setData, setAscending, setToggle, toggle }) => {
                     </button>
                   </div>
                 );
-              })}
+              })
+            : todo
+                .slice(0)
+                .reverse()
+                .map((data, index) => {
+                  // slice to make shallow copy
+                  return (
+                    <div className="todo-item" key={data.id}>
+                      <p>{data.id}</p>
+                      <p>{data.title}</p>
+                      <p>{data.completed}</p>
+                      <button
+                        onClick={() => {
+                          getUser(data, data.userId);
+                        }}
+                      >
+                        view user
+                      </button>
+                    </div>
+                  );
+                })}
+        </div>
       </div>
     </div>
   );

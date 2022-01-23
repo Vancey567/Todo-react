@@ -4,7 +4,6 @@ body {
 
 .todo-padd {
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     justify-content: space-around;
     margin: 40px auto;
@@ -14,6 +13,4 @@ body {
 .App {
     display: flex;
     width: 100%;
-    /* flex-direction: column; */
-    /* align-items: center; */
 }
